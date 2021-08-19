@@ -42,3 +42,23 @@ select.costum-select {
   background-color: #fefefe;
   border-radius: 5px;
 }
+.form-cars {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px 0 0 0;
+}
+button {
+  padding: 10px 0;
+}
+table {
+  margin: 30px 0;
+  width: 500px;
+}
+td {
+  border: 1px solid #cecece;
+  background-color: #f0f0f0;
+}
