@@ -6,3 +6,39 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+  width: 500px;
+}
+h1 {
+  margin: 5px 0;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-family: monospace;
+}
+select.costum-select {
+  height: 150px;
+}
+.colors-container {
+  display: flex;
+  gap: 10px;
+}
+.colors-container div {
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.colors-container p {
+  font-size: 0.675rem;
+  font-family: monospace;
+  text-transform: uppercase;
+  padding: 5px;
+  margin: 0;
+  background-color: #fefefe;
+  border-radius: 5px;
+}
