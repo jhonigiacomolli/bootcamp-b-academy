@@ -4,7 +4,6 @@ const table = document.querySelector('[data-js="table"]')
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   const elements = e.target.elements
-
   const row = document.createElement('tr')
   const url = document.createElement('td')
   const model = document.createElement('td')
