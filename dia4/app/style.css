@@ -33,6 +33,9 @@ td {
   border: 1px solid #cecece;
   background-color: #f0f0f0;
 }
+td button {
+  width: 80px;
+}
 img {
   max-width: 200px;
   max-height: 200px;

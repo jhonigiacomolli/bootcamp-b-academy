@@ -25,12 +25,27 @@ async function GetData () {
       colorDiv.style.height = '50px'
       colorDiv.style.backgroundColor = car.color
       tdColor.appendChild(colorDiv)
-      tr.classList.remove('empty')
+      const tdAction = document.createElement('td')
+      const action = document.createElement('button')
+      action.innerText = 'Excluir'
+      action.addEventListener('click', async (e) => {
+        e.preventDefault()
+        const result = await DeleteData(car.plate)
+        if(result.ok) {
+          DisplayMessage(`O carro com a placa ${car.plate} foi excluido com sucesso!`)
+          GetData()
+        } else {
+          DisplayMessage(`Opss... ocorreu um erro enquanto tentavamos excluir o carro com a placa ${car.plate}!`)
+          GetData()
+        }
+      })
+      tdAction.appendChild(action)
       tr.appendChild(tdImage)
       tr.appendChild(tdModel)
       tr.appendChild(tdYear)
       tr.appendChild(tdPlate)
       tr.appendChild(tdColor)
+      tr.appendChild(tdAction)
       table.appendChild(tr)
     })
   }else {
@@ -66,7 +81,7 @@ async function PostData() {
     })
   }).then(resp => resp.json())
 
-  result.error ? DisplayMessage(result.message) :  DisplayMessage(result.message), GetData()
+  result.error ? DisplayMessage(result.message) :  DisplayMessage(result.message), GetData(), form.reset()
 }
 
 form.addEventListener('submit', (e) => {
@@ -74,14 +89,28 @@ form.addEventListener('submit', (e) => {
   PostData()
 })
 
+async function DeleteData(plate) {
+  const result = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      plate: plate,
+    })
+  })
+
+  return result
+}
+
 
 function DisplayMessage(message) {
   const body = document.querySelector('body')
-
   const modal = document.createElement('div')
   const messageBox = document.createElement('div')
   const msg = document.createElement('p')
   const button = document.createElement('button')
+
   modal.classList.add('modal')
   modal.classList.add('open')
   messageBox.classList.add('message')
@@ -92,6 +121,7 @@ function DisplayMessage(message) {
     body.removeChild(modal)
   })
   messageBox.appendChild(button)
+
   modal.appendChild(messageBox)
   body.appendChild(modal)
 }
