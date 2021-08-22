@@ -52,7 +52,7 @@ async function GetData () {
     const tr = document.createElement('tr')
     const td = document.createElement('td')
     td.innerText = 'Nenhum carro encontrado'
-    td.setAttribute('colspan', 5)
+    td.setAttribute('colspan', 6)
     td.setAttribute('data-js', 'empty-row')
     tr.appendChild(td)
     table.appendChild(tr)
